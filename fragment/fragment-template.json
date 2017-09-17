@@ -1,0 +1,338 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "title": "Schema for OpenStack Heat Orchestration Templates",
+    "description": "https://docs.openstack.org/heat/latest/template_guide/hot_spec.html",
+    "type": "object",
+    "properties": {
+        "heat_template_version": {
+            "description": "This key with value `2013-05-23` (or a later date) indicates that the YAML document is a HOT template of the specified version.",
+            "type": "string",
+            "enum": [
+                "2013-05-23",
+                "2014-10-16",
+                "2015-04-30",
+                "2015-10-15",
+                "2016-04-08",
+                "2016-10-14",
+                "newton",
+                "2017-02-24",
+                "ocata",
+                "2017-09-01",
+                "pike",
+                "2018-03-02",
+                "queens"
+            ]
+        },
+        "description": {
+            "description": "This optional key allows for giving a description of the template, or the workload that can be deployed using the template.",
+            "type": "string"
+        },
+        "parameter_groups": {
+            "description": "This section allows for specifying how the input parameters should be grouped and the order to provide the parameters in. This section is optional and can be omitted when necessary.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "label": {
+                        "description": "A human-readable label that defines the associated group of parameters.",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "This attribute allows for giving a human-readable description of the parameter group.",
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "description": "A list of parameters associated with this parameter group.",
+                        "type": "array",
+                        "items": {
+                            "description": "The name of the parameter that is defined in the associated `parameters` section.",
+                            "type": "string"
+                        }
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "parameters": {
+            "description": "This section allows for specifying input parameters that have to be provided when instantiating the template. The section is optional and can be omitted when no input is required.",
+            "type": "object",
+            "additionalProperties": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "description": "The type of the parameter. Supported types are `string`, `number`, `comma_delimited_list`, `json` and `boolean`. This attribute is required.",
+                        "type": "string",
+                        "enum": [
+                            "string",
+                            "number",
+                            "comma_delimited_list",
+                            "json",
+                            "boolean"
+                        ]
+                    },
+                    "label": {
+                        "description": "A human readable name for the parameter. This attribute is optional.",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "A human readable description for the parameter. This attribute is optional.",
+                        "type": "string"
+                    },
+                    "default": {
+                        "description": "A default value for the parameter. This value is used if the user doesn’t specify his own value during deployment. This attribute is optional."
+                    },
+                    "hidden": {
+                        "description": "Defines whether the parameters should be hidden when a user requests information about a stack created from the template. This attribute can be used to hide passwords specified as parameters. This attribute is optional and defaults to `false`.",
+                        "type": "boolean"
+                    },
+                    "constraints": {
+                        "description": "A list of constraints to apply. The constraints are validated by the Orchestration engine when a user deploys a stack. The stack creation fails if the parameter value doesn’t comply to the constraints. This attribute is optional.",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "oneOf": [
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "length": {
+                                            "type": "object",
+                                            "properties": {
+                                                "min": {
+                                                    "type": "integer"
+                                                },
+                                                "max": {
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "additionalProperties": false
+                                        },
+                                        "description": {
+                                            "description": "A description of the constraint. The text is presented to the user when the value he defines violates the constraint. If omitted, a default validation message is presented to the user. This attribute is optional.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "length"
+                                    ],
+                                    "additionalProperties": false
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "range": {
+                                            "type": "object",
+                                            "properties": {
+                                                "min": {
+                                                    "type": "number"
+                                                },
+                                                "max": {
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "additionalProperties": false
+                                        },
+                                        "description": {
+                                            "description": "A description of the constraint. The text is presented to the user when the value he defines violates the constraint. If omitted, a default validation message is presented to the user. This attribute is optional.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "range"
+                                    ],
+                                    "additionalProperties": false
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "modulo": {
+                                            "type": "object",
+                                            "properties": {
+                                                "step": {
+                                                    "type": "integer"
+                                                },
+                                                "offset": {
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "required": [
+                                                "step",
+                                                "offset"
+                                            ],
+                                            "additionalProperties": false
+                                        },
+                                        "description": {
+                                            "description": "A description of the constraint. The text is presented to the user when the value he defines violates the constraint. If omitted, a default validation message is presented to the user. This attribute is optional.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "modulo"
+                                    ],
+                                    "additionalProperties": false
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "allowed_values": {
+                                            "type": "array"
+                                        },
+                                        "description": {
+                                            "description": "A description of the constraint. The text is presented to the user when the value he defines violates the constraint. If omitted, a default validation message is presented to the user. This attribute is optional.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "allowed_values"
+                                    ],
+                                    "additionalProperties": false
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "allowed_pattern": {
+                                            "type": "string"
+                                        },
+                                        "description": {
+                                            "description": "A description of the constraint. The text is presented to the user when the value he defines violates the constraint. If omitted, a default validation message is presented to the user. This attribute is optional.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "allowed_pattern"
+                                    ],
+                                    "additionalProperties": false
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "custom_constraint": {
+                                            "type": "string"
+                                        },
+                                        "description": {
+                                            "description": "A description of the constraint. The text is presented to the user when the value he defines violates the constraint. If omitted, a default validation message is presented to the user. This attribute is optional.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "custom_constraint"
+                                    ],
+                                    "additionalProperties": false
+                                }
+                            ],
+                            "additionalItems": false
+                        }
+                    },
+                    "immutable": {
+                        "description": "Defines whether the parameter is updatable. Stack update fails, if this is set to `true` and the parameter value is changed. This attribute is optional and defaults to `false`.",
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "type"
+                ],
+                "additionalProperties": false
+            }
+        },
+        "resources": {
+            "description": "This section contains the declaration of the single resources of the template. This section with at least one resource should be defined in any HOT template, or the template would not really do anything when being instantiated.",
+            "type": "object",
+            "additionalProperties": {}
+        },
+        "outputs": {
+            "description": "This section allows for specifying output parameters available to users once the template has been instantiated. This section is optional and can be omitted when no output values are required.",
+            "type": "object",
+            "additionalProperties": {
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "description": "A short description of the output parameter. This attribute is optional.",
+                        "type": "string"
+                    },
+                    "value": {
+                        "description": "The value of the output parameter. This value is usually resolved by means of a function. See Intrinsic functions for details about the functions. This attribute is required."
+                    },
+                    "condition": {
+                        "description": "To conditionally define an output value. None value will be shown if the condition is False. This attribute is optional. Note: Support `condition` for output is added in the Newton version."
+                    }
+                },
+                "required": [
+                    "value"
+                ],
+                "additionalProperties": false
+            }
+        },
+        "conditions": {
+            "description": "This optional section includes statements which can be used to restrict when a resource is created or when a property is defined. They can be associated with resources and resource properties in the `resources` section, also can be associated with outputs in the `outputs` sections of a template. Note: Support for this section is added in the Newton version.",
+            "type": "object"
+        }
+    },
+    "required": [
+        "heat_template_version",
+        "resources"
+    ],
+    "additionalProperties": false,
+    "definitions": {
+        "abstract-resource": {
+            "type": "object",
+            "properties": {
+                "metadata": {
+                    "description": "Resource-specific metadata. This section is optional."
+                },
+                "depends_on": {
+                    "description": "Dependencies of the resource on one or more resources of the template. See Resource dependencies for details. This attribute is optional.",
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                "update_policy": {
+                    "description": "Update policy for the resource, in the form of a nested dictionary. Whether update policies are supported and what the exact semantics are depends on the type of the current resource. This attribute is optional.",
+                    "type": "object"
+                },
+                "deletion_policy": {
+                    "description": "Deletion policy for the resource. The allowed deletion policies are `Delete`, `Retain`, and `Snapshot`. Beginning with `heat_template_version` `2016-10-14`, the lowercase equivalents `delete`, `retain`, and `snapshot` are also allowed. This attribute is optional; the default policy is to delete the physical resource when deleting a resource from the stack.",
+                    "type": "string",
+                    "enum": [
+                        "Delete",
+                        "Retain",
+                        "Snapshot",
+                        "delete",
+                        "retain",
+                        "snapshot"
+                    ]
+                },
+                "external_id": {
+                    "description": "Allows for specifying the resource_id for an existing external (to the stack) resource. External resources can not depend on other resources, but we allow other resources depend on external resource. This attribute is optional. Note: when this is specified, properties will not be used for building the resource and the resource is not managed by Heat. This is not possible to update that attribute. Also resource won’t be deleted by heat when stack is deleted.",
+                    "type": "string"
+                },
+                "condition": {
+                    "description": "Condition for the resource. Which decides whether to create the resource or not. This attribute is optional. Note: Support `condition` for resource is added in the Newton version.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "type"
+            ]
+        },
+        "intrinsic-function": {
+            "oneOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "get_param": {
+                            "type": "string"
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "allOf": [
+        {
+            "properties": {
+                "type": {
+                    "enum": []
+                },
+                "properties": {
+                    "type": "object",
+                    "properties": {},
+                    "required": [],
+                    "additionalProperties": false
+                }
+            },
+            "required": [
+                "type"
+            ]
+        },
+        {
+            "$ref": "#/definitions/abstract-resource"
+        }
+    ]
+}

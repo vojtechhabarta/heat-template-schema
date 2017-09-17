@@ -1,0 +1,15 @@
+{
+    "defaultSeverity": "warning",
+    "extends": [
+    ],
+    "jsRules": {},
+    "rules": {
+        "quotemark": [true, "double"],
+        "semicolon": [true, "always"],
+        "no-var-keyword": true,
+        "curly": true,
+        "triple-equals": [true, "allow-undefined-check", "allow-null-check"],
+        "no-null-keyword": true        
+    },
+    "rulesDirectory": []
+}
