@@ -9928,7 +9928,70 @@
         {
           "type": "object",
           "properties": {
+            "get_attr": {
+              "description": "The `get_attr` function references an attribute of a resource. The attribute value is resolved at runtime using the resource instance created from the respective resource definition.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#get-attr",
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "minItems": 1,
+              "additionalItems": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "integer"
+                  }
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
             "get_param": {
+              "description": "The `get_param` function references an input parameter of a template. It resolves to the value provided for this input parameter at runtime.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#get-param",
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    }
+                  ],
+                  "minItems": 1,
+                  "additionalItems": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "integer"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "get_resource": {
+              "description": "The `get_resource` function references another resource within the same template. At runtime, it is resolved to reference the ID of the referenced resource, which is resource type specific. For example, a reference to a floating IP resource returns the respective IP address at runtime.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#get-resource",
               "type": "string"
             }
           },
