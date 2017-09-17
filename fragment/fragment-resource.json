@@ -1,23 +1,23 @@
 {
-    "allOf": [
-        {
-            "properties": {
-                "type": {
-                    "enum": []
-                },
-                "properties": {
-                    "type": "object",
-                    "properties": {},
-                    "required": [],
-                    "additionalProperties": false
-                }
-            },
-            "required": [
-                "type"
-            ]
+  "allOf": [
+    {
+      "properties": {
+        "type": {
+          "enum": []
         },
-        {
-            "$ref": "#/definitions/abstract-resource"
+        "properties": {
+          "type": "object",
+          "properties": {},
+          "required": [],
+          "additionalProperties": false
         }
-    ]
+      },
+      "required": [
+        "type"
+      ]
+    },
+    {
+      "$ref": "#/definitions/abstract-resource"
+    }
+  ]
 }
