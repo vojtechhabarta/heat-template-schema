@@ -116,6 +116,12 @@ function createPropertySchema(definition: Property): JsonSchema {
                 type: getSchemaType(definition.type),
                 items: createPropertySchema(itemDefinition)
             };
+        } else if (definition.type === "map" && definition.schema && definition.schema["*"]) {
+            const valueDefinition = definition.schema["*"];
+            propertySchema = {
+                type: getSchemaType(definition.type),
+                additionalProperties: createPropertySchema(valueDefinition)
+            };
         } else if (definition.type === "map" && definition.schema) {
             propertySchema = createObjectSchema(definition.schema);
         } else {
