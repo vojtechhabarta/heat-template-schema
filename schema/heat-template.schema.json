@@ -2,6 +2,7 @@
   "$schema": "http://json-schema.org/schema#",
   "title": "Schema for OpenStack Heat Orchestration Templates",
   "description": "https://docs.openstack.org/heat/latest/template_guide/hot_spec.html",
+  "generatedBy": "https://github.com/vojtechhabarta/heat-template-schema",
   "type": "object",
   "properties": {
     "heat_template_version": {
@@ -9851,7 +9852,8 @@
             "type": "string"
           },
           "value": {
-            "description": "The value of the output parameter. This value is usually resolved by means of a function. See Intrinsic functions for details about the functions. This attribute is required."
+            "description": "The value of the output parameter. This value is usually resolved by means of a function. See Intrinsic functions for details about the functions. This attribute is required.",
+            "$ref": "#/definitions/value-with-intrinsic-function"
           },
           "condition": {
             "description": "To conditionally define an output value. None value will be shown if the condition is False. This attribute is optional. Note: Support `condition` for output is added in the Newton version."
@@ -9998,6 +10000,59 @@
           "additionalProperties": false
         }
       ]
+    },
+    "value-with-intrinsic-function": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/object-with-intrinsic-functions"
+        },
+        {
+          "$ref": "#/definitions/array-with-intrinsic-functions"
+        },
+        {
+          "$ref": "#/definitions/intrinsic-function"
+        },
+        {
+          "type": [
+            "string",
+            "integer",
+            "number",
+            "boolean",
+            "null"
+          ]
+        }
+      ]
+    },
+    "object-with-intrinsic-functions": {
+      "type": "object",
+      "not": {
+        "anyOf": [
+          {
+            "required": [
+              "get_attr"
+            ]
+          },
+          {
+            "required": [
+              "get_param"
+            ]
+          },
+          {
+            "required": [
+              "get_resource"
+            ]
+          }
+        ]
+      },
+      "additionalProperties": {
+        "$ref": "#/definitions/value-with-intrinsic-function"
+      }
+    },
+    "array-with-intrinsic-functions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/value-with-intrinsic-function"
+      }
     }
   }
 }
