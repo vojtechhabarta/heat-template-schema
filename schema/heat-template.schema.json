@@ -9990,6 +9990,16 @@
         {
           "type": "object",
           "properties": {
+            "get_file": {
+              "description": "The `get_file` function returns the content of a file into the template. It is generally used as a file inclusion mechanism for files containing scripts or configuration files.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#get-file",
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
             "get_param": {
               "description": "The `get_param` function references an input parameter of a template. It resolves to the value provided for this input parameter at runtime.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#get-param",
               "oneOf": [
@@ -10029,8 +10039,159 @@
             }
           },
           "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "list_join": {
+              "description": "The `list_join` function joins a list of strings with the given delimiter.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#list-join",
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                }
+              ],
+              "minItems": 2,
+              "additionalItems": {
+                "$ref": "#/definitions/array-with-intrinsic-functions"
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "digest": {
+              "description": "The `digest` function allows for performing digest operations on a given value.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#digest",
+              "type": "array",
+              "items": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "md5",
+                    "sha1",
+                    "sha224",
+                    "sha256",
+                    "sha384",
+                    "sha512"
+                  ]
+                },
+                {
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "$ref": "#/definitions/intrinsic-function"
+                    }
+                  ]
+                }
+              ],
+              "minItems": 2,
+              "maxItems": 2
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "repeat": {
+              "description": "The `repeat` function allows for dynamically transforming lists by iterating over the contents of one or more source lists and replacing the list elements into a template. The result of this function is a new list, where the elements are set to the template, rendered for each list item.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#repeat",
+              "type": "object",
+              "properties": {
+                "template": {
+                  "$ref": "#/definitions/value-with-intrinsic-function"
+                },
+                "for_each": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/definitions/array-with-intrinsic-functions"
+                      },
+                      {
+                        "$ref": "#/definitions/intrinsic-function"
+                      }
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "template",
+                "for_each"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "resource_facade": {
+              "description": "The `resource_facade` function retrieves data in a parent provider template.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#resource-facade",
+              "type": "string",
+              "enum": [
+                "metadata",
+                "deletion_policy",
+                "update_policy"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "str_replace": {
+              "description": "The `str_replace` function dynamically constructs strings by providing a template string with placeholders and a list of mappings to assign values to those placeholders at runtime. The placeholders are replaced with mapping values wherever a mapping key exactly matches a placeholder.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#str-replace",
+              "$ref": "#/definitions/str_replace-functions"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "str_replace_strict": {
+              "description": "`str_replace_strict` behaves identically to the `str_replace` function, only an error is raised if any of the params are not present in the template. This may help catch typo’s or other issues sooner rather than later when processing a template.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#str-replace-strict",
+              "$ref": "#/definitions/str_replace-functions"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "str_replace_vstrict": {
+              "description": "`str_replace_vstrict` behaves identically to the `str_replace_strict` function, only an error is raised if any of the params are empty. This may help catch issues (i.e., prevent resources from being created with bogus values) sooner rather than later if it is known that all the params should be non-empty.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#str-replace-vstrict",
+              "$ref": "#/definitions/str_replace-functions"
+            }
+          },
+          "additionalProperties": false
         }
       ]
+    },
+    "str_replace-functions": {
+      "type": "object",
+      "properties": {
+        "template": {
+          "type": "string"
+        },
+        "params": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/value-with-intrinsic-function"
+          }
+        }
+      },
+      "required": [
+        "template",
+        "params"
+      ],
+      "additionalProperties": false
     },
     "value-with-intrinsic-function": {
       "oneOf": [
@@ -10065,12 +10226,52 @@
           },
           {
             "required": [
+              "get_file"
+            ]
+          },
+          {
+            "required": [
               "get_param"
             ]
           },
           {
             "required": [
               "get_resource"
+            ]
+          },
+          {
+            "required": [
+              "list_join"
+            ]
+          },
+          {
+            "required": [
+              "digest"
+            ]
+          },
+          {
+            "required": [
+              "repeat"
+            ]
+          },
+          {
+            "required": [
+              "resource_facade"
+            ]
+          },
+          {
+            "required": [
+              "str_replace"
+            ]
+          },
+          {
+            "required": [
+              "str_replace_strict"
+            ]
+          },
+          {
+            "required": [
+              "str_replace_vstrict"
             ]
           }
         ]
