@@ -116,6 +116,8 @@ function createPropertySchema(definition: Property): JsonSchema {
                 type: getSchemaType(definition.type),
                 items: createPropertySchema(itemDefinition)
             };
+        } else if (definition.type === "list") {
+            propertySchema = { "$ref": "#/definitions/array-with-intrinsic-functions" };
         } else if (definition.type === "map" && definition.schema && definition.schema["*"]) {
             const valueDefinition = definition.schema["*"];
             propertySchema = {
@@ -124,6 +126,8 @@ function createPropertySchema(definition: Property): JsonSchema {
             };
         } else if (definition.type === "map" && definition.schema) {
             propertySchema = createObjectSchema(definition.schema);
+        } else if (definition.type === "map") {
+            propertySchema = { "$ref": "#/definitions/object-with-intrinsic-functions" };
         } else {
             propertySchema = {
                 type: getSchemaType(definition.type)

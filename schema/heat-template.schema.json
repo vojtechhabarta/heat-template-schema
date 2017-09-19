@@ -395,7 +395,7 @@
                         "description": "Not Implemented.\ntype: list\nrequired: true",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -406,7 +406,7 @@
                         "description": "List of LoadBalancer resources.\ntype: list",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -584,7 +584,7 @@
                                       "description": "The can be used to unmap a defined device.\ntype: map",
                                       "oneOf": [
                                         {
-                                          "type": "object"
+                                          "$ref": "#/definitions/object-with-intrinsic-functions"
                                         },
                                         {
                                           "$ref": "#/definitions/intrinsic-function"
@@ -623,7 +623,7 @@
                         "description": "Security group names to assign.\ntype: list",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -831,7 +831,7 @@
                         "description": "The set of parameters passed to this nested stack.\ntype: map\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -971,7 +971,7 @@
                         "description": "type: list\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -982,7 +982,7 @@
                         "description": "type: list\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -1059,7 +1059,7 @@
                         "description": "type: list\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -1081,7 +1081,7 @@
                         "description": "type: list\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -1455,7 +1455,7 @@
                                       "description": "The can be used to unmap a defined device.\ntype: map",
                                       "oneOf": [
                                         {
-                                          "type": "object"
+                                          "$ref": "#/definitions/object-with-intrinsic-functions"
                                         },
                                         {
                                           "$ref": "#/definitions/intrinsic-function"
@@ -1483,7 +1483,7 @@
                         "description": "Security group names to assign.\ntype: list",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -1494,7 +1494,7 @@
                         "description": "Security group IDs to assign.\ntype: list",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -1629,7 +1629,7 @@
                         "description": "Network interfaces to associate with instance.\ntype: list\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -1759,7 +1759,7 @@
                         "description": "List of security group IDs associated with this interface.\ntype: list\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -2703,7 +2703,7 @@
                         "description": "The list of instance IDs load balanced.\ntype: list\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -2769,7 +2769,7 @@
                                       "description": "Not Implemented.\ntype: list",
                                       "oneOf": [
                                         {
-                                          "type": "array"
+                                          "$ref": "#/definitions/array-with-intrinsic-functions"
                                         },
                                         {
                                           "$ref": "#/definitions/intrinsic-function"
@@ -2799,7 +2799,7 @@
                         "description": "The Availability Zones in which to create the load balancer.\ntype: list\nrequired: true",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -2810,7 +2810,7 @@
                         "description": "List of Security Groups assigned on current LB.\ntype: list\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -2978,7 +2978,7 @@
                         "description": "Not Implemented.\ntype: list",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -3015,7 +3015,7 @@
                         "description": "Access policies to apply to the user.\ntype: list",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -3064,7 +3064,7 @@
                         "description": "type: list\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -3186,7 +3186,7 @@
                         "description": "A list of URLs (webhooks) to invoke when state transitions to alarm.\ntype: list\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -3197,7 +3197,7 @@
                         "description": "A list of URLs (webhooks) to invoke when state transitions to ok.\ntype: list\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -3230,7 +3230,7 @@
                         "description": "List of alarm identifiers to combine.\ntype: list\nrequired: true\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -3370,7 +3370,7 @@
                         "description": "A list of URLs (webhooks) to invoke when state transitions to insufficient-data.\ntype: list\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -3531,7 +3531,7 @@
                         "description": "Key/value pairs to associate with the volume.\ntype: map\ndefault: {}\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -3586,7 +3586,7 @@
                         "description": "Arbitrary key-value pairs specified by the client to help the Cinder scheduler creating a volume.\ntype: map",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -3720,7 +3720,7 @@
                         "description": "Arbitrary properties to associate with the image.\ntype: map\ndefault: {}\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -3731,7 +3731,7 @@
                         "description": "List of image tags.\ntype: list\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -3905,7 +3905,7 @@
                         "description": "Resources that users are allowed to access by the DescribeStackResource API.\ntype: list\nrequired: true",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -3945,7 +3945,7 @@
                         "description": "Resource definition for the resources in the group, in HOT format. The value of this property is the definition of a resource just as if it had been declared in the template itself.\ntype: map\nrequired: true\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -4079,7 +4079,7 @@
                         "description": "Map representing the cloud-config data structure which will be formatted as YAML.\ntype: map",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -4117,7 +4117,7 @@
                         "description": "Arbitrary key/value metadata to store for this server. Both keys and values must be 255 characters or less. Non-string values will be serialized to JSON (and the serialized string must be 255 characters or less).\ntype: map\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -4268,7 +4268,7 @@
                         "description": "List of LoadBalancer resources.\ntype: list",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -4279,7 +4279,7 @@
                         "description": "Not Implemented.\ntype: list\nrequired: true",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -4626,7 +4626,7 @@
                         "description": "Properties to pass to each resource being created in the chain.\ntype: map",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -4637,7 +4637,7 @@
                         "description": "The list of resource types to create. This list may contain type names or aliases defined in the resource registry. Specific template names are not supported.\ntype: list\nrequired: true\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -4705,7 +4705,7 @@
                                 "description": "Property values for the resources in the group.\ntype: map",
                                 "oneOf": [
                                   {
-                                    "type": "object"
+                                    "$ref": "#/definitions/object-with-intrinsic-functions"
                                   },
                                   {
                                     "$ref": "#/definitions/intrinsic-function"
@@ -4716,7 +4716,7 @@
                                 "description": "Supplied metadata for the resources in the group.\ntype: map",
                                 "oneOf": [
                                   {
-                                    "type": "object"
+                                    "$ref": "#/definitions/object-with-intrinsic-functions"
                                   },
                                   {
                                     "$ref": "#/definitions/intrinsic-function"
@@ -4749,7 +4749,7 @@
                                       "description": "List of resources to be removed when doing an update which requires removal of specific resources. The resource may be specified several ways: (1) The resource name, as in the nested stack, (2) The resource reference returned from get_resource in a template, as available via the 'refs' attribute. Note this is destructive on update when specified; even if the count is not being reduced, and once a resource name is removed, it's name is never reused in subsequent updates.\ntype: list\ndefault: []",
                                       "oneOf": [
                                         {
-                                          "type": "array"
+                                          "$ref": "#/definitions/array-with-intrinsic-functions"
                                         },
                                         {
                                           "$ref": "#/definitions/intrinsic-function"
@@ -5056,7 +5056,7 @@
                         "description": "Map containing options specific to the configuration management tool used by this resource.\ntype: map",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -5262,7 +5262,7 @@
                         "description": "Map containing options specific to the configuration management tool used by this resource.\ntype: map",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -5405,7 +5405,7 @@
                         "description": "Which lifecycle actions of the deployment resource will result in this deployment being triggered.\ntype: list\ndefault: [\n    \"CREATE\",\n    \"UPDATE\"\n]\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -5427,7 +5427,7 @@
                         "description": "Input values to apply to the software configuration on this server.\ntype: map\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -5500,7 +5500,7 @@
                         "description": "Which lifecycle actions of the deployment resource will result in this deployment being triggered.\ntype: list\ndefault: [\n    \"CREATE\",\n    \"UPDATE\"\n]\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -5511,7 +5511,7 @@
                         "description": "A map of names and server IDs to apply configuration to. The name is arbitrary and is used as the Heat resource name for the corresponding deployment.\ntype: map\nrequired: true\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -5522,7 +5522,7 @@
                         "description": "Input values to apply to the software configuration on this server.\ntype: map\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -5601,7 +5601,7 @@
                         "description": "Set of parameters passed to this stack.\ntype: map\ndefault: {}\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -5746,7 +5746,7 @@
                         "description": "Map representing the configuration data structure which will be serialized to JSON format.\ntype: map",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -5757,7 +5757,7 @@
                         "description": "Map containing options specific to the configuration management tool used by this resource.\ntype: map",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -5911,7 +5911,7 @@
                         "description": "Which lifecycle actions of the deployment resource will result in this deployment being triggered.\ntype: list\ndefault: [\n    \"CREATE\",\n    \"UPDATE\"\n]\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -5933,7 +5933,7 @@
                         "description": "Input values to apply to the software configuration on this server.\ntype: map\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -6028,7 +6028,7 @@
                         "description": "Which lifecycle actions of the deployment resource will result in this deployment being triggered.\ntype: list\ndefault: [\n    \"CREATE\",\n    \"UPDATE\"\n]\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -6050,7 +6050,7 @@
                         "description": "Input values to apply to the software configuration on this server.\ntype: map\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -6061,7 +6061,7 @@
                         "description": "A map of names and server IDs to apply configuration to. The name is arbitrary and is used as the Heat resource name for the corresponding deployment.\ntype: map\nrequired: true\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -6652,7 +6652,7 @@
                         "description": "Extra parameters to include in the \"floatingip\" object in the creation request. Parameters are often specific to installed hardware or extensions.\ntype: map\ndefault: {}",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -6821,7 +6821,7 @@
                         "description": "Dictionary of L7-parameters.\ntype: map",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -7070,7 +7070,7 @@
                         "description": "The IDs of the DHCP agent to schedule the network. Note that the default policy setting in Neutron restricts usage of this property to administrative users only.\ntype: list\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -7125,7 +7125,7 @@
                         "description": "Extra parameters to include in the request. Parameters are often specific to installed hardware or extensions.\ntype: map\ndefault: {}\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -7486,7 +7486,7 @@
                         "description": "Extra parameters to include in the request.\ntype: map\ndefault: {}\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -7589,7 +7589,7 @@
                         "description": "Security group IDs to associate with this port.\ntype: list\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -7662,7 +7662,7 @@
                         "description": "Dictionary of service function parameter. Currently only correlation=None is supported.\ntype: map\ndefault: {\n    \"correlation\": null\n}",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -8049,7 +8049,7 @@
                         "description": "Extra parameters to include in the creation request.\ntype: map\ndefault: {}\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -8517,7 +8517,7 @@
                         "description": "A specified set of DNS name servers to be used.\ntype: list\ndefault: []\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -8652,7 +8652,7 @@
                         "description": "Extra parameters to include in the request.\ntype: map\ndefault: {}\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -9292,7 +9292,7 @@
                                               "description": "Extra parameters to include in the request.\ntype: map\ndefault: {}\nupdate_allowed: true",
                                               "oneOf": [
                                                 {
-                                                  "type": "object"
+                                                  "$ref": "#/definitions/object-with-intrinsic-functions"
                                                 },
                                                 {
                                                   "$ref": "#/definitions/intrinsic-function"
@@ -9382,7 +9382,7 @@
                         "description": "List of security group names or IDs. Cannot be used if neutron ports are associated with this server; assign security groups to the ports instead.\ntype: list\ndefault: []",
                         "oneOf": [
                           {
-                            "type": "array"
+                            "$ref": "#/definitions/array-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -9393,7 +9393,7 @@
                         "description": "Arbitrary key-value pairs specified by the client to help boot a server.\ntype: map",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -9437,7 +9437,7 @@
                         "description": "A map of files to create/overwrite on the server upon boot. Keys are file names and values are the file contents.\ntype: map\ndefault: {}",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
@@ -9755,7 +9755,7 @@
                         "description": "Arbitrary key/value metadata to store for this server. Both keys and values must be 255 characters or less. Non-string values will be serialized to JSON (and the serialized string must be 255 characters or less).\ntype: map\ndefault: {}\nupdate_allowed: true",
                         "oneOf": [
                           {
-                            "type": "object"
+                            "$ref": "#/definitions/object-with-intrinsic-functions"
                           },
                           {
                             "$ref": "#/definitions/intrinsic-function"
