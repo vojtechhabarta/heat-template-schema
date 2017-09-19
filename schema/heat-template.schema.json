@@ -9856,7 +9856,18 @@
             "$ref": "#/definitions/value-with-intrinsic-function"
           },
           "condition": {
-            "description": "To conditionally define an output value. None value will be shown if the condition is False. This attribute is optional. Note: Support `condition` for output is added in the Newton version."
+            "description": "To conditionally define an output value. None value will be shown if the condition is False. This attribute is optional. Note: Support `condition` for output is added in the Newton version.",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "$ref": "#/definitions/intrinsic-function"
+              }
+            ]
           }
         },
         "required": [
@@ -9867,7 +9878,17 @@
     },
     "conditions": {
       "description": "This optional section includes statements which can be used to restrict when a resource is created or when a property is defined. They can be associated with resources and resource properties in the `resources` section, also can be associated with outputs in the `outputs` sections of a template. Note: Support for this section is added in the Newton version.",
-      "type": "object"
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "$ref": "#/definitions/intrinsic-function"
+          }
+        ]
+      }
     }
   },
   "required": [
@@ -9918,7 +9939,17 @@
         },
         "condition": {
           "description": "Condition for the resource. Which decides whether to create the resource or not. This attribute is optional. Note: Support `condition` for resource is added in the Newton version.",
-          "type": "string"
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "#/definitions/intrinsic-function"
+            }
+          ]
         }
       },
       "required": [
