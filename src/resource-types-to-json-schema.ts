@@ -35,7 +35,7 @@ export function resourceTypesToJsonSchema(resourceTypes: { [key: string]: Resour
     const resourcesSchema = templateFragment.properties!["resources"].additionalProperties as JsonSchema;
     resourcesSchema.oneOf = [];
 
-    for (const resourceTypeName of Object.keys(resourceTypes)) {
+    for (const resourceTypeName of Object.keys(resourceTypes).sort((a, b) => a.localeCompare(b))) {
         const resourceType = resourceTypes[resourceTypeName];
         const resource = JSON.parse(JSON.stringify(resourceFragment)) as JsonSchema;
         const resourceSchema = resource.allOf![0];
