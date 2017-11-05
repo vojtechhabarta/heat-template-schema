@@ -43,16 +43,8 @@ export function resourceTypesToJsonSchema(resourceTypes: { [key: string]: Resour
         const enumArray = typeProperty.enum!;
         enumArray.push(resourceTypeName);
 
-        let description = "";
-        if (resourceType.description) {
-            description += processDescription(resourceType.description);
-        }
-        description += renderList("Properties", resourceType.properties);
-        description += renderList("Output Attributes", resourceType.attributes);
-        description = description.trim();
-        if (description) {
-            typeProperty.description = description;
-        }
+        typeProperty.description = getResourceTypeDescription(resourceType, false);
+        typeProperty.markdownDescription = getResourceTypeDescription(resourceType, true);
 
         if (resourceType.properties) {
             const x = createObjectSchema(resourceType.properties);
@@ -63,6 +55,15 @@ export function resourceTypesToJsonSchema(resourceTypes: { [key: string]: Resour
     }
 
     return templateFragment;
+
+    function getResourceTypeDescription(resourceType: ResourceType, markdown: boolean) {
+        let description = (
+            processDescription(resourceType.description, markdown) +
+            renderList("Properties", resourceType.properties, markdown) +
+            renderList("Output Attributes", resourceType.attributes, markdown)
+        ).trim();
+        return description ? description : undefined;
+    }
 }
 
 function createObjectSchema(object: Properties): JsonSchema {
@@ -85,29 +86,8 @@ function createObjectSchema(object: Properties): JsonSchema {
 
 function createPropertySchema(definition: Property): JsonSchema {
     const property: JsonSchema = {};
-    let description = "";
-    if (definition.description) {
-        description += processDescription(definition.description) + "\n";
-    }
-    if (definition.type) {
-        description += "type: " + definition.type + "\n";
-    }
-    if (definition.required) {
-        description += "required: true\n";
-    }
-    if (definition.default) {
-        description += "default: " + JSON.stringify(definition.default, undefined, 4) + "\n";
-    }
-    if (definition.update_allowed) {
-        description += "update_allowed: true\n";
-    }
-    if (definition.immutable) {
-        description += "immutable: true\n";
-    }
-    description = description.trim();
-    if (description) {
-        property.description = description;
-    }
+    property.description = getPropertyDescription(definition, false);
+    property.markdownDescription = getPropertyDescription(definition, true);
     if (definition.type) {
         let propertySchema: JsonSchema;
         if (definition.type === "list" && definition.schema && definition.schema["*"]) {
@@ -139,20 +119,46 @@ function createPropertySchema(definition: Property): JsonSchema {
         ];
     }
     return property;
+
+    function getPropertyDescription(definition: Property, markdown: boolean) {
+        const nl = markdown ? "\n\n" : "\n";
+        let description = "";
+        if (definition.description) {
+            description += processDescription(definition.description, markdown) + nl;
+        }
+        const infos = [
+            info("type", definition.type, markdown),
+            info("required", definition.required, markdown),
+            info("default", JSON.stringify(definition.default, undefined, 4), markdown),
+            info("update_allowed", definition.update_allowed, markdown),
+            info("immutable", definition.immutable, markdown),
+        ];
+        description += infos.filter(info => !!info).join(nl);
+        description = description.trim();
+        return description ? description : undefined;
+
+        function info(name: string, value: string | boolean | undefined, markdown: boolean) {
+            if (!value) {
+                return "";
+            }
+            const valueString = typeof value === "string" ? value : value.toString();
+            return italics(name, markdown) + ": " + code(valueString, markdown);
+        }
+    }
 }
 
-function renderList(heading: string, list?: { [name: string]: (Property | Attribute) }): string {
+function renderList(heading: string, list: { [name: string]: (Property | Attribute) } | undefined, markdown: boolean): string {
     let result = "";
     if (list) {
-        // const properties = resourceType.properties;
         result += "\n";
-        result += heading + ":\n";
+        result += markdown ? "### " + heading : heading;
+        result += "\n";
         result += Object.keys(list).sort()
             .map(name => {
                 const item = list[name];
                 return "* "
-                    + name
-                    + (item.type ? ": " + item.type : "")
+                    + bold(name, markdown)
+                    + (item.type ? ": " + code(item.type, markdown) : "")
                     + (item.description ? " - " + item.description : "");
             })
             .join("\n");
@@ -161,9 +167,37 @@ function renderList(heading: string, list?: { [name: string]: (Property | Attrib
     return result;
 }
 
-function processDescription(description: string) {
-    // TODO remove markdown
-    return description.replace(/(\n\n)|(\n)/g, (match) => match === "\n\n" ? "\n" : " ").trim();
+function processDescription(description: string | undefined, markdown: boolean) {
+    if (!description) {
+        return "";
+    }
+    if (markdown) {
+        return description;
+    } else {
+        // TODO remove markdown
+        return description.replace(/(\n\n)|(\n)/g, (match) => match === "\n\n" ? "\n" : " ").trim();
+    }
+}
+
+function bold(text: string | undefined, markdown: boolean): string {
+    if (!text) {
+        return "";
+    }
+    return markdown ? "**" + text + "**" : text;
+}
+
+function italics(text: string | undefined, markdown: boolean): string {
+    if (!text) {
+        return "";
+    }
+    return markdown ? "*" + text + "*" : text;
+}
+
+function code(text: string | undefined, markdown: boolean): string {
+    if (!text) {
+        return "";
+    }
+    return markdown ? "`" + text + "`" : text;
 }
 
 function getSchemaType(type: Type): string {

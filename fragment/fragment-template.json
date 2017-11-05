@@ -2,11 +2,13 @@
   "$schema": "http://json-schema.org/schema#",
   "title": "Schema for OpenStack Heat Orchestration Templates",
   "description": "https://docs.openstack.org/heat/latest/template_guide/hot_spec.html",
+  "markdownDescription": "https://docs.openstack.org/heat/latest/template_guide/hot_spec.html",
   "generatedBy": "https://github.com/vojtechhabarta/heat-template-schema",
   "type": "object",
   "properties": {
     "heat_template_version": {
       "description": "This key with value `2013-05-23` (or a later date) indicates that the YAML document is a HOT template of the specified version.",
+      "markdownDescription": "This key with value `2013-05-23` (or a later date) indicates that the YAML document is a HOT template of the specified version.",
       "type": "string",
       "enum": [
         "2013-05-23",
@@ -26,27 +28,33 @@
     },
     "description": {
       "description": "This optional key allows for giving a description of the template, or the workload that can be deployed using the template.",
+      "markdownDescription": "This optional key allows for giving a description of the template, or the workload that can be deployed using the template.",
       "type": "string"
     },
     "parameter_groups": {
       "description": "This section allows for specifying how the input parameters should be grouped and the order to provide the parameters in. This section is optional and can be omitted when necessary.",
+      "markdownDescription": "This section allows for specifying how the input parameters should be grouped and the order to provide the parameters in. This section is optional and can be omitted when necessary.",
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
           "label": {
             "description": "A human-readable label that defines the associated group of parameters.",
+            "markdownDescription": "A human-readable label that defines the associated group of parameters.",
             "type": "string"
           },
           "description": {
             "description": "This attribute allows for giving a human-readable description of the parameter group.",
+            "markdownDescription": "This attribute allows for giving a human-readable description of the parameter group.",
             "type": "string"
           },
           "parameters": {
             "description": "A list of parameters associated with this parameter group.",
+            "markdownDescription": "A list of parameters associated with this parameter group.",
             "type": "array",
             "items": {
               "description": "The name of the parameter that is defined in the associated `parameters` section.",
+              "markdownDescription": "The name of the parameter that is defined in the associated `parameters` section.",
               "type": "string"
             }
           }
@@ -56,12 +64,14 @@
     },
     "parameters": {
       "description": "This section allows for specifying input parameters that have to be provided when instantiating the template. The section is optional and can be omitted when no input is required.",
+      "markdownDescription": "This section allows for specifying input parameters that have to be provided when instantiating the template. The section is optional and can be omitted when no input is required.",
       "type": "object",
       "additionalProperties": {
         "type": "object",
         "properties": {
           "type": {
             "description": "The type of the parameter. Supported types are `string`, `number`, `comma_delimited_list`, `json` and `boolean`. This attribute is required.",
+            "markdownDescription": "The type of the parameter. Supported types are `string`, `number`, `comma_delimited_list`, `json` and `boolean`. This attribute is required.",
             "type": "string",
             "enum": [
               "string",
@@ -73,21 +83,26 @@
           },
           "label": {
             "description": "A human readable name for the parameter. This attribute is optional.",
+            "markdownDescription": "A human readable name for the parameter. This attribute is optional.",
             "type": "string"
           },
           "description": {
             "description": "A human readable description for the parameter. This attribute is optional.",
+            "markdownDescription": "A human readable description for the parameter. This attribute is optional.",
             "type": "string"
           },
           "default": {
-            "description": "A default value for the parameter. This value is used if the user doesn’t specify his own value during deployment. This attribute is optional."
+            "description": "A default value for the parameter. This value is used if the user doesn’t specify his own value during deployment. This attribute is optional.",
+            "markdownDescription": "A default value for the parameter. This value is used if the user doesn’t specify his own value during deployment. This attribute is optional."
           },
           "hidden": {
             "description": "Defines whether the parameters should be hidden when a user requests information about a stack created from the template. This attribute can be used to hide passwords specified as parameters. This attribute is optional and defaults to `false`.",
+            "markdownDescription": "Defines whether the parameters should be hidden when a user requests information about a stack created from the template. This attribute can be used to hide passwords specified as parameters. This attribute is optional and defaults to `false`.",
             "type": "boolean"
           },
           "constraints": {
             "description": "A list of constraints to apply. The constraints are validated by the Orchestration engine when a user deploys a stack. The stack creation fails if the parameter value doesn’t comply to the constraints. This attribute is optional.",
+            "markdownDescription": "A list of constraints to apply. The constraints are validated by the Orchestration engine when a user deploys a stack. The stack creation fails if the parameter value doesn’t comply to the constraints. This attribute is optional.",
             "type": "array",
             "items": {
               "type": "object",
@@ -109,6 +124,7 @@
                     },
                     "description": {
                       "description": "A description of the constraint. The text is presented to the user when the value he defines violates the constraint. If omitted, a default validation message is presented to the user. This attribute is optional.",
+                      "markdownDescription": "A description of the constraint. The text is presented to the user when the value he defines violates the constraint. If omitted, a default validation message is presented to the user. This attribute is optional.",
                       "type": "string"
                     }
                   },
@@ -134,6 +150,7 @@
                     },
                     "description": {
                       "description": "A description of the constraint. The text is presented to the user when the value he defines violates the constraint. If omitted, a default validation message is presented to the user. This attribute is optional.",
+                      "markdownDescription": "A description of the constraint. The text is presented to the user when the value he defines violates the constraint. If omitted, a default validation message is presented to the user. This attribute is optional.",
                       "type": "string"
                     }
                   },
@@ -163,6 +180,7 @@
                     },
                     "description": {
                       "description": "A description of the constraint. The text is presented to the user when the value he defines violates the constraint. If omitted, a default validation message is presented to the user. This attribute is optional.",
+                      "markdownDescription": "A description of the constraint. The text is presented to the user when the value he defines violates the constraint. If omitted, a default validation message is presented to the user. This attribute is optional.",
                       "type": "string"
                     }
                   },
@@ -179,6 +197,7 @@
                     },
                     "description": {
                       "description": "A description of the constraint. The text is presented to the user when the value he defines violates the constraint. If omitted, a default validation message is presented to the user. This attribute is optional.",
+                      "markdownDescription": "A description of the constraint. The text is presented to the user when the value he defines violates the constraint. If omitted, a default validation message is presented to the user. This attribute is optional.",
                       "type": "string"
                     }
                   },
@@ -195,6 +214,7 @@
                     },
                     "description": {
                       "description": "A description of the constraint. The text is presented to the user when the value he defines violates the constraint. If omitted, a default validation message is presented to the user. This attribute is optional.",
+                      "markdownDescription": "A description of the constraint. The text is presented to the user when the value he defines violates the constraint. If omitted, a default validation message is presented to the user. This attribute is optional.",
                       "type": "string"
                     }
                   },
@@ -211,6 +231,7 @@
                     },
                     "description": {
                       "description": "A description of the constraint. The text is presented to the user when the value he defines violates the constraint. If omitted, a default validation message is presented to the user. This attribute is optional.",
+                      "markdownDescription": "A description of the constraint. The text is presented to the user when the value he defines violates the constraint. If omitted, a default validation message is presented to the user. This attribute is optional.",
                       "type": "string"
                     }
                   },
@@ -225,6 +246,7 @@
           },
           "immutable": {
             "description": "Defines whether the parameter is updatable. Stack update fails, if this is set to `true` and the parameter value is changed. This attribute is optional and defaults to `false`.",
+            "markdownDescription": "Defines whether the parameter is updatable. Stack update fails, if this is set to `true` and the parameter value is changed. This attribute is optional and defaults to `false`.",
             "type": "boolean"
           }
         },
@@ -236,25 +258,30 @@
     },
     "resources": {
       "description": "This section contains the declaration of the single resources of the template. This section with at least one resource should be defined in any HOT template, or the template would not really do anything when being instantiated.",
+      "markdownDescription": "This section contains the declaration of the single resources of the template. This section with at least one resource should be defined in any HOT template, or the template would not really do anything when being instantiated.",
       "type": "object",
       "additionalProperties": {}
     },
     "outputs": {
       "description": "This section allows for specifying output parameters available to users once the template has been instantiated. This section is optional and can be omitted when no output values are required.",
+      "markdownDescription": "This section allows for specifying output parameters available to users once the template has been instantiated. This section is optional and can be omitted when no output values are required.",
       "type": "object",
       "additionalProperties": {
         "type": "object",
         "properties": {
           "description": {
             "description": "A short description of the output parameter. This attribute is optional.",
+            "markdownDescription": "A short description of the output parameter. This attribute is optional.",
             "type": "string"
           },
           "value": {
             "description": "The value of the output parameter. This value is usually resolved by means of a function. See Intrinsic functions for details about the functions. This attribute is required.",
+            "markdownDescription": "The value of the output parameter. This value is usually resolved by means of a function. See Intrinsic functions for details about the functions. This attribute is required.",
             "$ref": "#/definitions/value-with-intrinsic-function"
           },
           "condition": {
             "description": "To conditionally define an output value. None value will be shown if the condition is False. This attribute is optional. Note: Support `condition` for output is added in the Newton version.",
+            "markdownDescription": "To conditionally define an output value. None value will be shown if the condition is False. This attribute is optional. Note: Support `condition` for output is added in the Newton version.",
             "oneOf": [
               {
                 "type": "string"
@@ -276,6 +303,7 @@
     },
     "conditions": {
       "description": "This optional section includes statements which can be used to restrict when a resource is created or when a property is defined. They can be associated with resources and resource properties in the `resources` section, also can be associated with outputs in the `outputs` sections of a template. Note: Support for this section is added in the Newton version.",
+      "markdownDescription": "This optional section includes statements which can be used to restrict when a resource is created or when a property is defined. They can be associated with resources and resource properties in the `resources` section, also can be associated with outputs in the `outputs` sections of a template. Note: Support for this section is added in the Newton version.",
       "type": "object",
       "additionalProperties": {
         "oneOf": [
@@ -299,10 +327,12 @@
       "type": "object",
       "properties": {
         "metadata": {
-          "description": "Resource-specific metadata. This section is optional."
+          "description": "Resource-specific metadata. This section is optional.",
+          "markdownDescription": "Resource-specific metadata. This section is optional."
         },
         "depends_on": {
           "description": "Dependencies of the resource on one or more resources of the template. See Resource dependencies for details. This attribute is optional.",
+          "markdownDescription": "Dependencies of the resource on one or more resources of the template. See Resource dependencies for details. This attribute is optional.",
           "oneOf": [
             {
               "type": "string"
@@ -317,10 +347,12 @@
         },
         "update_policy": {
           "description": "Update policy for the resource, in the form of a nested dictionary. Whether update policies are supported and what the exact semantics are depends on the type of the current resource. This attribute is optional.",
+          "markdownDescription": "Update policy for the resource, in the form of a nested dictionary. Whether update policies are supported and what the exact semantics are depends on the type of the current resource. This attribute is optional.",
           "type": "object"
         },
         "deletion_policy": {
           "description": "Deletion policy for the resource. The allowed deletion policies are `Delete`, `Retain`, and `Snapshot`. Beginning with `heat_template_version` `2016-10-14`, the lowercase equivalents `delete`, `retain`, and `snapshot` are also allowed. This attribute is optional; the default policy is to delete the physical resource when deleting a resource from the stack.",
+          "markdownDescription": "Deletion policy for the resource. The allowed deletion policies are `Delete`, `Retain`, and `Snapshot`. Beginning with `heat_template_version` `2016-10-14`, the lowercase equivalents `delete`, `retain`, and `snapshot` are also allowed. This attribute is optional; the default policy is to delete the physical resource when deleting a resource from the stack.",
           "type": "string",
           "enum": [
             "Delete",
@@ -333,10 +365,12 @@
         },
         "external_id": {
           "description": "Allows for specifying the resource_id for an existing external (to the stack) resource. External resources can not depend on other resources, but we allow other resources depend on external resource. This attribute is optional. Note: when this is specified, properties will not be used for building the resource and the resource is not managed by Heat. This is not possible to update that attribute. Also resource won’t be deleted by heat when stack is deleted.",
+          "markdownDescription": "Allows for specifying the resource_id for an existing external (to the stack) resource. External resources can not depend on other resources, but we allow other resources depend on external resource. This attribute is optional. Note: when this is specified, properties will not be used for building the resource and the resource is not managed by Heat. This is not possible to update that attribute. Also resource won’t be deleted by heat when stack is deleted.",
           "type": "string"
         },
         "condition": {
           "description": "Condition for the resource. Which decides whether to create the resource or not. This attribute is optional. Note: Support `condition` for resource is added in the Newton version.",
+          "markdownDescription": "Condition for the resource. Which decides whether to create the resource or not. This attribute is optional. Note: Support `condition` for resource is added in the Newton version.",
           "oneOf": [
             {
               "type": "string"
@@ -361,6 +395,7 @@
           "properties": {
             "get_attr": {
               "description": "The `get_attr` function references an attribute of a resource. The attribute value is resolved at runtime using the resource instance created from the respective resource definition.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#get-attr",
+              "markdownDescription": "The `get_attr` function references an attribute of a resource. The attribute value is resolved at runtime using the resource instance created from the respective resource definition.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#get-attr",
               "type": "array",
               "items": [
                 {
@@ -390,6 +425,7 @@
           "properties": {
             "get_file": {
               "description": "The `get_file` function returns the content of a file into the template. It is generally used as a file inclusion mechanism for files containing scripts or configuration files.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#get-file",
+              "markdownDescription": "The `get_file` function returns the content of a file into the template. It is generally used as a file inclusion mechanism for files containing scripts or configuration files.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#get-file",
               "type": "string"
             }
           },
@@ -400,6 +436,7 @@
           "properties": {
             "get_param": {
               "description": "The `get_param` function references an input parameter of a template. It resolves to the value provided for this input parameter at runtime.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#get-param",
+              "markdownDescription": "The `get_param` function references an input parameter of a template. It resolves to the value provided for this input parameter at runtime.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#get-param",
               "oneOf": [
                 {
                   "type": "string"
@@ -433,6 +470,7 @@
           "properties": {
             "get_resource": {
               "description": "The `get_resource` function references another resource within the same template. At runtime, it is resolved to reference the ID of the referenced resource, which is resource type specific. For example, a reference to a floating IP resource returns the respective IP address at runtime.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#get-resource",
+              "markdownDescription": "The `get_resource` function references another resource within the same template. At runtime, it is resolved to reference the ID of the referenced resource, which is resource type specific. For example, a reference to a floating IP resource returns the respective IP address at runtime.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#get-resource",
               "type": "string"
             }
           },
@@ -443,6 +481,7 @@
           "properties": {
             "list_join": {
               "description": "The `list_join` function joins a list of strings with the given delimiter.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#list-join",
+              "markdownDescription": "The `list_join` function joins a list of strings with the given delimiter.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#list-join",
               "type": "array",
               "items": [
                 {
@@ -462,6 +501,7 @@
           "properties": {
             "digest": {
               "description": "The `digest` function allows for performing digest operations on a given value.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#digest",
+              "markdownDescription": "The `digest` function allows for performing digest operations on a given value.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#digest",
               "type": "array",
               "items": [
                 {
@@ -497,6 +537,7 @@
           "properties": {
             "repeat": {
               "description": "The `repeat` function allows for dynamically transforming lists by iterating over the contents of one or more source lists and replacing the list elements into a template. The result of this function is a new list, where the elements are set to the template, rendered for each list item.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#repeat",
+              "markdownDescription": "The `repeat` function allows for dynamically transforming lists by iterating over the contents of one or more source lists and replacing the list elements into a template. The result of this function is a new list, where the elements are set to the template, rendered for each list item.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#repeat",
               "type": "object",
               "properties": {
                 "template": {
@@ -530,6 +571,7 @@
           "properties": {
             "resource_facade": {
               "description": "The `resource_facade` function retrieves data in a parent provider template.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#resource-facade",
+              "markdownDescription": "The `resource_facade` function retrieves data in a parent provider template.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#resource-facade",
               "type": "string",
               "enum": [
                 "metadata",
@@ -545,6 +587,7 @@
           "properties": {
             "str_replace": {
               "description": "The `str_replace` function dynamically constructs strings by providing a template string with placeholders and a list of mappings to assign values to those placeholders at runtime. The placeholders are replaced with mapping values wherever a mapping key exactly matches a placeholder.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#str-replace",
+              "markdownDescription": "The `str_replace` function dynamically constructs strings by providing a template string with placeholders and a list of mappings to assign values to those placeholders at runtime. The placeholders are replaced with mapping values wherever a mapping key exactly matches a placeholder.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#str-replace",
               "$ref": "#/definitions/str_replace-functions"
             }
           },
@@ -555,6 +598,7 @@
           "properties": {
             "str_replace_strict": {
               "description": "`str_replace_strict` behaves identically to the `str_replace` function, only an error is raised if any of the params are not present in the template. This may help catch typo’s or other issues sooner rather than later when processing a template.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#str-replace-strict",
+              "markdownDescription": "`str_replace_strict` behaves identically to the `str_replace` function, only an error is raised if any of the params are not present in the template. This may help catch typo’s or other issues sooner rather than later when processing a template.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#str-replace-strict",
               "$ref": "#/definitions/str_replace-functions"
             }
           },
@@ -565,6 +609,7 @@
           "properties": {
             "str_replace_vstrict": {
               "description": "`str_replace_vstrict` behaves identically to the `str_replace_strict` function, only an error is raised if any of the params are empty. This may help catch issues (i.e., prevent resources from being created with bogus values) sooner rather than later if it is known that all the params should be non-empty.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#str-replace-vstrict",
+              "markdownDescription": "`str_replace_vstrict` behaves identically to the `str_replace_strict` function, only an error is raised if any of the params are empty. This may help catch issues (i.e., prevent resources from being created with bogus values) sooner rather than later if it is known that all the params should be non-empty.\nhttps://docs.openstack.org/heat/latest/template_guide/hot_spec.html#str-replace-vstrict",
               "$ref": "#/definitions/str_replace-functions"
             }
           },

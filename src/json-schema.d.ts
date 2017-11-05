@@ -1,6 +1,7 @@
 
 interface JsonSchema {
     description?: string;
+    markdownDescription?: string;
     properties?: JsonSchemaMap;
     required?: string[];
     additionalProperties?: boolean | JsonSchema;
