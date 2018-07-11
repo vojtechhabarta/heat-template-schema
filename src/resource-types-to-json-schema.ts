@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 // This CLI script converts resource types to JSON schema.
 
 import * as fs from "fs";
@@ -15,20 +16,28 @@ main().then(
 
 async function main() {
     if (process.argv.length < 4) {
-        throw new Error("Usage: node lib/resource-types-to-json-schema.js <input-resource-types-file> <output-schema-file>");
+        throw new Error("Usage: resource-types-to-json-schema <output-schema-file> <input-resource-types-file>...");
     }
-    const [, , inputFile, outputFile] = process.argv;
+    const [, , outputFile, ...inputFiles] = process.argv;
 
-    console.log(`Reading file '${inputFile}'...`);
-    const input = fs.readFileSync(inputFile, "utf8");
-    const json = JSON.parse(input);
-    const schema = resourceTypesToJsonSchema(json.resource_types);
+    const resourceTypes: ResourceTypes = {};
+    for (const inputFile of inputFiles) {
+        console.log(`Reading file '${inputFile}'...`);
+        const input = fs.readFileSync(inputFile, "utf8");
+        const json = JSON.parse(input);
+        for (const name in json.resource_types) {
+            if (resourceTypes[name] === undefined) {
+                resourceTypes[name] = json.resource_types[name];
+            }
+        }
+    }
+    const schema = resourceTypesToJsonSchema(resourceTypes);
     const schemaString = JSON.stringify(schema, undefined, 2);
     console.log(`Writing file '${outputFile}'...`);
     fs.writeFileSync(outputFile, schemaString, "utf8");
 }
 
-export function resourceTypesToJsonSchema(resourceTypes: { [key: string]: ResourceType }): JsonSchema {
+export function resourceTypesToJsonSchema(resourceTypes: ResourceTypes): JsonSchema {
     const templateFragment = require("../fragment/fragment-template") as JsonSchema;
     const resourceFragment = require("../fragment/fragment-resource") as JsonSchema;
 

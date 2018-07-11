@@ -2,15 +2,19 @@
   "name": "heat-template-schema",
   "version": "1.0.0",
   "description": "OpenStack Heat Orchestration Template JSON Schema",
-  "scripts": {
-    "build": "tsc",
-    "watch": "tsc -watch"
-  },
   "author": "Vojtěch Habarta",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/vojtechhabarta/heat-template-schema.git"
+  },
+  "bin": {
+    "download-resource-types": "lib/download-resource-types.js",
+    "resource-types-to-json-schema": "lib/resource-types-to-json-schema.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -watch"
   },
   "dependencies": {
     "axios": "^0.16.2"
@@ -18,7 +22,7 @@
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/node": "^8.0.28",
-    "typescript": "^2.5.2"
+    "typescript": "^2.9.2"
   },
   "files": [
     "fragment",

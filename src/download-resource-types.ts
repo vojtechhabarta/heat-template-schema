@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 // This CLI script downloads resource type definitions from running OpenStack instance.
 
 import * as fs from "fs";
@@ -16,7 +17,7 @@ main().then(
 
 async function main() {
     if (process.argv.length < 6) {
-        throw new Error("Usage: node lib/download-resource-types.js <output-resource-types-file> <openstack-keystone-url> <username> <password> [projectId]");
+        throw new Error("Usage: download-resource-types <output-resource-types-file> <openstack-keystone-url> <username> <password> [projectId]");
     }
     const [, , outputFile, keystoneUrl, username, password, projectId] = process.argv;
 
