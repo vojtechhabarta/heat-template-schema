@@ -17,12 +17,11 @@
     "watch": "tsc -watch"
   },
   "dependencies": {
-    "axios": "^0.16.2"
+    "axios": "0.19.0"
   },
   "devDependencies": {
-    "@types/axios": "^0.14.0",
-    "@types/node": "^8.0.28",
-    "typescript": "^2.9.2"
+    "@types/node": "8.10.49",
+    "typescript": "3.5.1"
   },
   "files": [
     "fragment",
